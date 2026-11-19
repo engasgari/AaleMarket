@@ -1,0 +1,128 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/livewire/dist/**/*.js';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../../app/Modules/**/*.blade.php";
+
+@theme {
+    --font-sans: 'Vazirmatn', ui-sans-serif, system-ui, sans-serif;
+
+    --color-primary: #172B4D;
+    --color-primary-dark: #0F1C33;
+    --color-primary-light: #243B67;
+
+    --color-surface: #FFFFFF;
+    --color-surface-secondary: #F5F7FA;
+
+    --color-ink: #202936;
+    --color-ink-muted: #6B7280;
+
+    --color-line: #E5E7EB;
+
+    --color-success: #0F766E;
+    --color-danger: #B91C1C;
+    --color-warning: #B45309;
+}
+
+@layer base {
+    html {
+        direction: rtl;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-surface text-ink font-sans antialiased;
+    }
+
+    a {
+        @apply text-inherit no-underline;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+
+    ::selection {
+        background-color: color-mix(in srgb, var(--color-primary) 18%, white);
+    }
+}
+
+@layer components {
+    .container-store {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 bg-primary text-white hover:bg-primary-dark;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 border border-line bg-surface text-ink hover:bg-surface-secondary;
+    }
+
+    .btn-ghost {
+        @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 text-ink-muted hover:bg-surface-secondary hover:text-ink;
+    }
+
+    .input {
+        @apply w-full rounded-md border border-line bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary;
+    }
+
+    .label {
+        @apply mb-1.5 block text-sm font-medium text-ink;
+    }
+
+    .card-surface {
+        @apply border border-line bg-surface;
+    }
+
+    .home-hero__media {
+        animation: home-hero-zoom 18s ease-out forwards;
+    }
+
+    .home-hero__brand,
+    .home-hero__title,
+    .home-hero__copy,
+    .home-hero__cta {
+        animation: home-hero-rise 0.9s ease-out both;
+    }
+
+    .home-hero__title {
+        animation-delay: 0.12s;
+    }
+
+    .home-hero__copy {
+        animation-delay: 0.22s;
+    }
+
+    .home-hero__cta {
+        animation-delay: 0.32s;
+    }
+}
+
+@keyframes home-hero-zoom {
+    from {
+        transform: scale(1.06);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes home-hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
